@@ -1,1 +1,9 @@
-%h1 index.haml
+.col-md-12
+  - @posts.each do |p|
+    %h1= link_to(p.title, post_path(p))
+    - if p.editable_by?(current_user)
+      = link_to("Edit", edit_post_path(p))
+      = link_to("Delete", post_path(p), method: :delete, data: {confirm: "Are you sure?"})
+    %h4 #{p.author.name}, #{p.created_at.strftime("%A %B %d")}
+    %p= truncate(p.content, length: 200)
+    %hr

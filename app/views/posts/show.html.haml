@@ -1,0 +1,11 @@
+.col-md-4.col-md-offset-4
+  %h1= @post.title
+  = link_to("Back", root_path)
+  - if @post.editable_by?(current_user)
+    = link_to("Edit", edit_post_path(@post))
+    = link_to("Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"})
+
+  %h4 Posted by : #{@post.author.name}
+  %h5 Post at #{@post.created_at.strftime("%A %B %d")}
+  %hr
+  %p= @post.content
