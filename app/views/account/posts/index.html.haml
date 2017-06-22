@@ -1,0 +1,9 @@
+.col-md-12
+  %h1 我發表的文章
+
+  - @posts.each do |p|
+    %h1= link_to(p.title, post_path(p))
+    %p= truncate(p.content, length: 200)
+    = link_to("Edit", edit_post_path(p))
+    = link_to("Delete", post_path(p), method: :delete, data: {confirm: "Are you sure?"})
+    %hr

@@ -1,0 +1,9 @@
+.col-md-12
+  %h1 我發表的評論
+
+  - @comments.each do |c|
+    %h1= link_to(c.post.title, post_path(c.post))
+    %p= truncate(c.content, length: 200)
+    = link_to("Edit", edit_post_comment_path(c.post, c))
+    = link_to("Delete", post_comment_path(c.post, c), method: :delete, data: {confirm: "Are you sure?"})
+    %hr
