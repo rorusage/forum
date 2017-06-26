@@ -9,8 +9,8 @@
   %h5 Post at #{@post.created_at.strftime("%A %B %d")}
   %hr
   %p= @post.content
-
-  %h4 Comments:
+  %br
+  %h4 #{@post.comments_count} Comments:
   - @comments.each do |c|
     #{c.author.name} said:
     %br
